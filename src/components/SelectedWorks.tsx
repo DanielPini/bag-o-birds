@@ -11,6 +11,26 @@ type Work = {
   stack: string[];
 };
 
+const stackMap = new Map();
+stackMap
+  .set("MySQL", "/mysql.svg")
+  .set("WordPress", "/wordpress.svg")
+  .set("EcmaScript (JS)", "/ecmascript.svg")
+  .set("PHP", "/php.svg")
+  .set("CSS", "/css.svg")
+  .set("HTML", "/html.svg")
+  .set("SQLite", "/sqlite.svg")
+  .set("React", "/react.svg")
+  .set("PostgreSQL", "/postgres.svg")
+  .set("Clerk", "/clerk.svg")
+  .set("Prisma", "/prisma.svg")
+  .set("Drizzle", "/drizzle.svg")
+  .set("Hono", "/hono.svg")
+  .set("Stripe", "/stripe.svg")
+  .set("Vite", "vite.svg")
+  .set("SquareSpace", "/squarespace.svg")
+  .set("Howler", "/howler.svg");
+
 const works: Work[] = [
   {
     id: "coma",
@@ -19,7 +39,7 @@ const works: Work[] = [
     client: ["CoMA"],
     url: "https://coma.org",
     description: "An e-commerce platform for contemporary classical music.",
-    stack: ["SQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
+    stack: ["MySQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
   },
   {
     id: "straddle-poker",
