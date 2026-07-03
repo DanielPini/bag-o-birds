@@ -39,23 +39,20 @@ const works = [
 export default function SelectedWorks() {
   const [openId, setOpenId] = useState<string | null>(null);
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log("Clicked", e.target);
-  };
   return (
     <div className="selected-works-container">
       <h2>Selected works</h2>
       <ul>
-        {works.map((item) => (
-          <li key={item.id}>
-            <a href={item.url}>
-              <h3>{item.title}</h3>
+        {works.map((work) => (
+          <li key={work.id}>
+            <a href={work.url}>
+              <h3>{work.title}</h3>
               <div
-                className="description-box"
-                onClick={() => setOpenId(openId === item.id ? null : item.id)}
-                aria-expanded={openId === item.id}
+                className={`description-box ${openId === work.id ? "is-open" : ""}`}
+                onClick={() => setOpenId(openId === work.id ? null : work.id)}
+                aria-expanded={openId === work.id}
               >
-                {item.description}
+                <div className="description-inner">{work.description}</div>
               </div>
             </a>
           </li>
