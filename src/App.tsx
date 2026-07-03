@@ -1,9 +1,10 @@
 import SelectedWorks from "./components/SelectedWorks";
+import Title from "./components/Title";
 
 export default function App() {
   return (
     <>
-      <h1>Hello birbs</h1>
+      <Title />
       <SelectedWorks />
     </>
   );

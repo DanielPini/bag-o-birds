@@ -3,18 +3,14 @@ import { useState } from "react";
 const works = [
   {
     id: "coma",
+    year: "2025 - 2026",
     title: "CoMA",
     url: "https://coma.org",
     description: "An e-commerce platform for contemporary classical music.",
   },
   {
-    id: "niki-johnson",
-    title: "Niki Johnosn",
-    url: "https://niki-johnson.com",
-    description: "Portfolio website for Niki Johnson.",
-  },
-  {
     id: "straddle-poker",
+    year: "2026",
     title: "Straddle Poker",
     url: "https://straddle-poker.com",
     description:
@@ -22,17 +18,33 @@ const works = [
   },
   {
     id: "jack-farman",
+    year: "2026",
     title: "Jack Farman",
     url: "https://jack-farman.netlify.app",
     description:
       "Portfolio website for Jack Farman, filmmaker and ecological advocate.",
   },
   {
+    id: "niki-johnson",
+    year: "2025 - 2026",
+    title: "Niki Johnosn",
+    url: "https://niki-johnson.com",
+    description: "Portfolio website for Niki Johnson.",
+  },
+  {
     id: "earthly-futures",
+    year: "2025",
     title: "Earthly Futures",
     url: "https://earthly-futures.com",
     description:
       "Studio producing design objects focussed around nature, ecology, and our relationship therin.",
+  },
+  {
+    id: "fa-tpwg",
+    year: "2025",
+    title: "FABLE ARTS - The Parts We Give",
+    url: "https://fable-arts.com",
+    description: "Custom video game for contemporary opera.",
   },
 ];
 
