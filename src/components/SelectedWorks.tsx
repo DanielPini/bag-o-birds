@@ -45,16 +45,24 @@ export default function SelectedWorks() {
       <ul>
         {works.map((work) => (
           <li key={work.id}>
-            <a href={work.url}>
-              <h3>{work.title}</h3>
+            <div className="title-container">
+              <a href={work.url}>
+                <h3>{work.title}</h3>
+              </a>
               <div
-                className={`description-box ${openId === work.id ? "is-open" : ""}`}
+                className={`lines ${openId === work.id ? "is-open" : ""}`}
                 onClick={() => setOpenId(openId === work.id ? null : work.id)}
-                aria-expanded={openId === work.id}
               >
-                <div className="description-inner">{work.description}</div>
+                <div className="line hline"></div>
+                <div className="line vline"></div>
               </div>
-            </a>
+            </div>
+            <div
+              className={`description-box ${openId === work.id ? "is-open" : ""}`}
+              aria-expanded={openId === work.id}
+            >
+              <div className="description-inner">{work.description}</div>
+            </div>
           </li>
         ))}
       </ul>
