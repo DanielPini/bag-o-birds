@@ -3,13 +3,75 @@
     400 16px / 1.5 "Sora",
     sans-serif;
 }
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------- App --------- */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------- Title --------- */
+.title-bg {
+  width: fit-content;
+  --hue-1: 200;
+  --hue-2: 260;
+  --hue-3: 320;
+  --hue-4: 20;
+}
+.title-bg h1 {
+  background:
+    linear-gradient(
+      to bottom right,
+      hsl(var(--hue-1), 100%, 65%),
+      hsla(var(--hue-1), 80%, 95%, 0)
+    ),
+    linear-gradient(
+      to bottom left,
+      hsl(var(--hue-2), 100%, 65%),
+      hsla(var(--hue-2), 80%, 95%, 0)
+    ),
+    linear-gradient(
+      to top left,
+      hsl(var(--hue-3), 100%, 65%),
+      hsla(var(--hue-3), 80%, 95%, 0)
+    ),
+    linear-gradient(
+      to top right,
+      hsl(var(--hue-4), 100%, 65%),
+      hsla(var(--hue-4), 80%, 95%, 0)
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------- SelectedWorks --------- */
 ul {
   list-style: none;
 }
 .selected-works-container {
   display: flex;
   flex-flow: column;
-  align-items: center;
+}
+.selected-works-container h2 {
+  font-weight: 800;
 }
 .description-box {
   display: grid;
@@ -27,6 +89,16 @@ ul {
   flex-flow: row nowrap;
   align-items: center;
   gap: 10px;
+}
+.title-container a {
+  color: teal;
+}
+.title-container h3 {
+  transform: skew(0deg);
+  transition: transform 300ms ease;
+}
+.title-container h3.is-open {
+  transform: skew(-15deg);
 }
 .lines {
   /* border: 1px solid black; */
@@ -46,46 +118,12 @@ ul {
   border: 1px solid black;
 }
 .hline {
-  top: 5px;
+  top: 4px;
   width: 10px;
   height: 0;
 }
 .vline {
-  left: 5px;
+  left: 4px;
   height: 10px;
   width: 0;
-}
-.title-bg {
-  width: fit-content;
-  --hue-1: 200;
-  --hue-2: 260;
-  --hue-3: 320;
-  --hue-4: 20;
-  background:
-    linear-gradient(
-      to bottom right,
-      hsl(var(--hue-1), 100%, 60%),
-      hsla(var(--hue-1), 70%, 95%, 0)
-    ),
-    linear-gradient(
-      to bottom left,
-      hsl(var(--hue-2), 100%, 60%),
-      hsla(var(--hue-2), 70%, 95%, 0)
-    ),
-    linear-gradient(
-      to top left,
-      hsl(var(--hue-3), 100%, 60%),
-      hsla(var(--hue-3), 70%, 95%, 0)
-    ),
-    linear-gradient(
-      to top right,
-      hsl(var(--hue-4), 100%, 60%),
-      hsla(var(--hue-4), 70%, 95%, 0)
-    );
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-.title-bg h1 {
-  color: transparent;
-  -webkit-text-fill-color: transparent;
 }
