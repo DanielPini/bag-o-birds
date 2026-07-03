@@ -8,6 +8,7 @@ type Work = {
   collaborator?: string[];
   url: string;
   description: string;
+  whatWeDid: string;
   stack: string[];
 };
 
@@ -39,17 +40,21 @@ const works: Work[] = [
     title: "CoMA",
     client: ["CoMA"],
     url: "https://coma.org",
-    description: "An e-commerce platform for contemporary classical music.",
+    description:
+      "CoMA is a Contemporary music organisation based in the UK. Established in 1993, CoMA runs events for musicians of all abilities to build musical communities and new repertoires. Devoted to creating a culture of musical participation and collaboration, CoMA runs contemporary music ensembles throughout the UK, with an expanding international program.",
+    whatWeDid:
+      "Updated digital presence, e-commerce integration, and database.",
     stack: ["MySQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
   },
   {
     id: "straddle-poker",
     year: "2026",
     title: "Straddle Poker",
-    collaborator: ["R A A D"],
+    collaborator: ["R A A D Studio de Création"],
     url: "https://straddle-poker.com",
     description:
-      "A modern clean blinds timer and poker tournament organising tool.",
+      "Playing cards is supposed to be fun. Setting up a game shouldn't be a chore. Straddle is the solution. Built from the bottom up as a solution for professional players to complete beginners, Straddle takes care of all the maths. With a modern, clean design, smooth animations, and customisable skins and sounds, Straddle lets you focus on the game instead of worrying about the setup. Optional add-ons include skins, a player tracker, prize calculations, and an ICM model, each for a one-time purchase.",
+    whatWeDid: "Built out from scratch.",
     stack: [
       "Hono",
       "Drizzle",
@@ -70,7 +75,9 @@ const works: Work[] = [
     client: ["Jack Farman"],
     url: "https://jack-farman.netlify.app",
     description:
-      "Portfolio website for Jack Farman, filmmaker and ecological advocate.",
+      "Jack Farman is a filmmaker, researcher, and entrepreneur. Jack's work explores the intersection of ecology, spacial practice and collective memory.",
+    whatWeDid:
+      "Portfolio website integrating his work on Koinpost, his films, and his  ecological advocacy.",
     stack: ["Vite", "TypeScript", "React", "CSS", "HTML"],
   },
   {
@@ -79,7 +86,10 @@ const works: Work[] = [
     title: "Niki Johnson Portfolio",
     client: ["Niki Johnson"],
     url: "https://niki-johnson.com",
-    description: "Portfolio website for Niki Johnson.",
+    description:
+      "Contemporary percussionist, researcher, and compoer-performer.",
+    whatWeDid:
+      "Portfolio website on squarespace integrating her prolific performing practice, her PhD thesis, her teaching, and events.",
     stack: ["SquareSpace", "CSS", "HTML"],
   },
   {
@@ -90,6 +100,7 @@ const works: Work[] = [
     url: "https://earthly-futures.com",
     description:
       "Studio producing design objects focussed around nature, ecology, and our relationship therin.",
+    whatWeDid: "Calendar integration and events booking system.",
     stack: ["EcmaScript (JS)", "CSS", "HTML"],
   },
   {
@@ -99,6 +110,7 @@ const works: Work[] = [
     client: ["FABLE ARTS", "Christine Pan"],
     url: "https://fable-arts.com",
     description: "Custom video game for contemporary opera.",
+    whatWeDid: "Built out from scratch.",
     stack: ["Howler", "EcmaScript (JS)", "CSS", "HTML"],
   },
 ];
@@ -134,6 +146,7 @@ export default function SelectedWorks() {
             >
               <div className="description-inner">
                 <p>{work.description}</p>
+                <p>{work.whatWeDid}</p>
                 <a href={work.url}>{work.url}</a>
                 <p>
                   {work.stack.map((el) => (
