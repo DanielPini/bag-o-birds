@@ -127,3 +127,29 @@ ul {
   height: 10px;
   width: 0;
 }
+.stack-image {
+  height: 30px;
+  margin: 10px;
+  filter: grayscale(1);
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-bubble {
+  position: absolute;
+  background: beige;
+  bottom: 100%;
+  left: 0;
+  padding: 2px 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease;
+  font-size: 9px;
+}
+.tooltip:hover .tooltip-bubble,
+.tooltip:focus-within .tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
+}

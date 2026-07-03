@@ -16,6 +16,7 @@ stackMap
   .set("MySQL", "/mysql.svg")
   .set("WordPress", "/wordpress.svg")
   .set("EcmaScript (JS)", "/ecmascript.svg")
+  .set("TypeScript", "/typescript.svg")
   .set("PHP", "/php.svg")
   .set("CSS", "/css.svg")
   .set("HTML", "/html.svg")
@@ -110,16 +111,15 @@ export default function SelectedWorks() {
       <ul>
         {works.map((work) => (
           <li key={work.id}>
-            <div className="title-container">
-              <a href={work.url}>
-                <h3 className={openId === work.id ? "is-open" : ""}>
-                  {work.title}
-                </h3>
-              </a>
-              <div
-                className={`lines ${openId === work.id ? "is-open" : ""}`}
-                onClick={() => setOpenId(openId === work.id ? null : work.id)}
-              >
+            <div
+              tabIndex={0}
+              className="title-container"
+              onClick={() => setOpenId(openId === work.id ? null : work.id)}
+            >
+              <h3 className={openId === work.id ? "is-open" : ""}>
+                {work.title}
+              </h3>
+              <div className={`lines ${openId === work.id ? "is-open" : ""}`}>
                 <div className="line hline"></div>
                 <div className="line vline"></div>
               </div>
@@ -130,7 +130,23 @@ export default function SelectedWorks() {
             >
               <div className="description-inner">
                 <p>{work.description}</p>
-                <p>{work.stack.map((el) => `${el + ", "}`)}</p>
+                <a href={work.url}>{work.url}</a>
+                <p>
+                  {work.stack.map((el) => (
+                    <span className="tooltip" key={el}>
+                      <img
+                        src={stackMap.get(el)}
+                        alt={el}
+                        height={30}
+                        className="stack-image"
+                        tabIndex={0}
+                      />
+                      <span className="tooltip-bubble" role="presentation">
+                        {el}
+                      </span>
+                    </span>
+                  ))}
+                </p>
               </div>
             </div>
           </li>
