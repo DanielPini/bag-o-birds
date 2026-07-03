@@ -46,6 +46,7 @@ const works: Work[] = [
     id: "straddle-poker",
     year: "2026",
     title: "Straddle Poker",
+    collaborator: ["R A A D"],
     url: "https://straddle-poker.com",
     description:
       "A modern clean blinds timer and poker tournament organising tool.",
