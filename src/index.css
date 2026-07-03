@@ -40,18 +40,32 @@ footer div {
   width: 100%;
   text-align: center;
 }
+.image-container {
+  position: relative;
+}
+.bob-image {
+  position: absolute;
+  filter: contrast(2);
+  bottom: 0;
+  right: 0px;
+}
 
 @media only screen and (max-width: 700px) {
   .sections-container {
     grid-template-columns: 1fr;
   }
   footer {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-flow: column-reverse;
     margin: 0 auto;
   }
   footer div {
     text-align: center;
     padding-top: 0;
+  }
+  .bob-image {
+    left: 25%;
+    transform: translateX(-50%);
   }
 }
 
@@ -120,8 +134,11 @@ ul {
   align-items: center;
   gap: 10px;
 }
-.title-container a {
-  color: teal;
+.url {
+  color: black;
+}
+.url:hover {
+  color: hotpink;
 }
 .title-container button {
   display: flex;

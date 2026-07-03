@@ -31,7 +31,8 @@ stackMap
   .set("Stripe", "/stripe.svg")
   .set("Vite", "vite.svg")
   .set("SquareSpace", "/squarespace.svg")
-  .set("Howler", "/howler.svg");
+  .set("Howler", "/howler.svg")
+  .set("Kirby", "/kirby.svg");
 
 const works: Work[] = [
   {
@@ -45,6 +46,17 @@ const works: Work[] = [
     whatWeDid:
       "Updated digital presence, e-commerce integration, and database.",
     stack: ["MySQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
+  },
+  {
+    id: "runway",
+    year: "2026",
+    title: "Runway Journal",
+    url: "https://runway.org.au",
+    description:
+      "Runway Journal is an open-access digital publishing platform that commissions, cultivates and preserves experimental and critical writing practices. As one of Australia’s longest-running artist-run initiatives, Runway is committed to advancing the field of experimental digital art and fostering the practices of emerging and underrepresented voices.",
+    whatWeDid:
+      "Work with artists and writers to create immersive and innovative digital works.",
+    stack: ["Kirby", "EcmaScript (JS)", "CSS", "HTML"],
   },
   {
     id: "straddle-poker",
@@ -119,56 +131,69 @@ export default function SelectedWorks() {
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <div className="selected-works-container">
-      <h2>Selected works</h2>
-      <ul>
-        {works.map((work) => (
-          <li key={work.id}>
-            <h3
-              className={`title-container ${openId === work.id ? "is-open" : ""}`}
-            >
-              <button
-                type="button"
-                className={openId === work.id ? "is-open" : ""}
-                aria-expanded={openId === work.id}
-                onClick={() => setOpenId(openId === work.id ? null : work.id)}
-              >
-                {work.title}
-                <div className={`lines ${openId === work.id ? "is-open" : ""}`}>
-                  <div className="line hline"></div>
-                  <div className="line vline"></div>
+    <div className="sections-container">
+      <section>
+        <div className="selected-works-container">
+          <h2>Selected works</h2>
+          <ul>
+            {works.map((work) => (
+              <li key={work.id}>
+                <h3
+                  className={`title-container ${openId === work.id ? "is-open" : ""}`}
+                >
+                  <button
+                    type="button"
+                    className={openId === work.id ? "is-open" : ""}
+                    aria-expanded={openId === work.id}
+                    onClick={() =>
+                      setOpenId(openId === work.id ? null : work.id)
+                    }
+                  >
+                    {work.title}
+                    <div
+                      className={`lines ${openId === work.id ? "is-open" : ""}`}
+                    >
+                      <div className="line hline"></div>
+                      <div className="line vline"></div>
+                    </div>
+                  </button>
+                </h3>
+                <div
+                  className={`description-box ${openId === work.id ? "is-open" : ""}`}
+                  inert={openId !== work.id}
+                >
+                  <div className="description-inner">
+                    <p>{work.description}</p>
+                    <p>{work.whatWeDid}</p>
+                    <a href={work.url} className="url">
+                      {work.url}
+                    </a>
+                    <p>
+                      {work.stack.map((el) => (
+                        <span className="tooltip" key={el}>
+                          <img
+                            src={stackMap.get(el)}
+                            alt={el}
+                            height={30}
+                            className="stack-image"
+                            tabIndex={0}
+                          />
+                          <span className="tooltip-bubble" aria-hidden="true">
+                            {el}
+                          </span>
+                        </span>
+                      ))}
+                    </p>
+                  </div>
                 </div>
-              </button>
-            </h3>
-            <div
-              className={`description-box ${openId === work.id ? "is-open" : ""}`}
-              inert={openId !== work.id}
-            >
-              <div className="description-inner">
-                <p>{work.description}</p>
-                <p>{work.whatWeDid}</p>
-                <a href={work.url}>{work.url}</a>
-                <p>
-                  {work.stack.map((el) => (
-                    <span className="tooltip" key={el}>
-                      <img
-                        src={stackMap.get(el)}
-                        alt={el}
-                        height={30}
-                        className="stack-image"
-                        tabIndex={0}
-                      />
-                      <span className="tooltip-bubble" aria-hidden="true">
-                        {el}
-                      </span>
-                    </span>
-                  ))}
-                </p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Screenshots</h2>
+      </section>
     </div>
   );
 }

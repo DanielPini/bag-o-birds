@@ -8,18 +8,17 @@ export default function App() {
       <main>
         <Title />
         <About />
-        <div className="sections-container">
-          <section>
-            <SelectedWorks />
-          </section>
-          <section>
-            <div className="">Other text</div>
-          </section>
-        </div>
+        <SelectedWorks />
       </main>
       <footer>
-        <div className="updated">Last updated July 2026</div>
-        <div className="copyright">&copy;2026 Daniel Pini</div>
+        <div className="updated">
+          <p>Last updated July 2026</p>
+          <p>&copy;2026 Daniel Pini</p>
+        </div>
+        <div></div>
+        <div className="image-container">
+          <img src="/android-chrome-192x192.png" alt="" className="bob-image" />
+        </div>
       </footer>
     </div>
   );
