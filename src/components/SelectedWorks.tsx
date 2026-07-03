@@ -111,22 +111,25 @@ export default function SelectedWorks() {
       <ul>
         {works.map((work) => (
           <li key={work.id}>
-            <div
-              tabIndex={0}
-              className="title-container"
-              onClick={() => setOpenId(openId === work.id ? null : work.id)}
+            <h3
+              className={`title-container ${openId === work.id ? "is-open" : ""}`}
             >
-              <h3 className={openId === work.id ? "is-open" : ""}>
+              <button
+                type="button"
+                className={openId === work.id ? "is-open" : ""}
+                aria-expanded={openId === work.id}
+                onClick={() => setOpenId(openId === work.id ? null : work.id)}
+              >
                 {work.title}
-              </h3>
-              <div className={`lines ${openId === work.id ? "is-open" : ""}`}>
-                <div className="line hline"></div>
-                <div className="line vline"></div>
-              </div>
-            </div>
+                <div className={`lines ${openId === work.id ? "is-open" : ""}`}>
+                  <div className="line hline"></div>
+                  <div className="line vline"></div>
+                </div>
+              </button>
+            </h3>
             <div
               className={`description-box ${openId === work.id ? "is-open" : ""}`}
-              aria-expanded={openId === work.id}
+              inert={openId !== work.id}
             >
               <div className="description-inner">
                 <p>{work.description}</p>
@@ -141,7 +144,7 @@ export default function SelectedWorks() {
                         className="stack-image"
                         tabIndex={0}
                       />
-                      <span className="tooltip-bubble" role="presentation">
+                      <span className="tooltip-bubble" aria-hidden="true">
                         {el}
                       </span>
                     </span>
