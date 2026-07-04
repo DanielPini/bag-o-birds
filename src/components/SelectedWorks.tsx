@@ -10,6 +10,7 @@ type Work = {
   description: string;
   whatWeDid: string;
   stack: string[];
+  screenshots: string[];
 };
 
 const stackMap = new Map();
@@ -46,6 +47,7 @@ const works: Work[] = [
     whatWeDid:
       "Updated digital presence, e-commerce integration, and database.",
     stack: ["MySQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
+    screenshots: [],
   },
   {
     id: "runway",
@@ -57,6 +59,7 @@ const works: Work[] = [
     whatWeDid:
       "Work with artists and writers to create immersive and innovative digital works.",
     stack: ["Kirby", "EcmaScript (JS)", "CSS", "HTML"],
+    screenshots: [],
   },
   {
     id: "straddle-poker",
@@ -79,11 +82,12 @@ const works: Work[] = [
       "CSS",
       "HTML",
     ],
+    screenshots: [],
   },
   {
     id: "jack-farman",
     year: "2026",
-    title: "Jack Farman Portfolio",
+    title: "Jack Farman",
     client: ["Jack Farman"],
     url: "https://jack-farman.netlify.app",
     description:
@@ -91,11 +95,12 @@ const works: Work[] = [
     whatWeDid:
       "Portfolio website integrating his work on Koinpost, his films, and his  ecological advocacy.",
     stack: ["Vite", "TypeScript", "React", "CSS", "HTML"],
+    screenshots: [],
   },
   {
     id: "niki-johnson",
     year: "2025 - 2026",
-    title: "Niki Johnson Portfolio",
+    title: "Niki Johnson",
     client: ["Niki Johnson"],
     url: "https://niki-johnson.com",
     description:
@@ -103,6 +108,7 @@ const works: Work[] = [
     whatWeDid:
       "Portfolio website on squarespace integrating her prolific performing practice, her PhD thesis, her teaching, and events.",
     stack: ["SquareSpace", "CSS", "HTML"],
+    screenshots: [],
   },
   {
     id: "earthly-futures",
@@ -111,9 +117,10 @@ const works: Work[] = [
     client: ["Earthly Futures Studio"],
     url: "https://earthly-futures.com",
     description:
-      "Studio producing design objects focussed around nature, ecology, and our relationship therin.",
+      "Studio producing design objects focussed around nature, ecology, and our relationship therein.",
     whatWeDid: "Calendar integration and events booking system.",
     stack: ["EcmaScript (JS)", "CSS", "HTML"],
+    screenshots: ["/earthly-futures-calendar-vid.webm"],
   },
   {
     id: "fa-tpwg",
@@ -124,6 +131,7 @@ const works: Work[] = [
     description: "Custom video game for contemporary opera.",
     whatWeDid: "Built out from scratch.",
     stack: ["Howler", "EcmaScript (JS)", "CSS", "HTML"],
+    screenshots: [],
   },
 ];
 
@@ -134,7 +142,7 @@ export default function SelectedWorks() {
     <div className="sections-container">
       <section>
         <div className="selected-works-container">
-          <h2>Selected works</h2>
+          <h2 className="subheading">Selected works</h2>
           <ul>
             {works.map((work) => (
               <li key={work.id}>
@@ -164,7 +172,7 @@ export default function SelectedWorks() {
                 >
                   <div className="description-inner">
                     <p>{work.description}</p>
-                    <p>{work.whatWeDid}</p>
+                    <p className="what-we-did">{work.whatWeDid}</p>
                     <a href={work.url} className="url">
                       {work.url}
                     </a>
@@ -192,7 +200,13 @@ export default function SelectedWorks() {
         </div>
       </section>
       <section>
-        <h2>Screenshots</h2>
+        {works
+          .find((work) => work.id === openId)
+          ?.screenshots.map((screenshot) => (
+            <video className="selected-works-video" autoPlay loop muted>
+              <source src={screenshot}></source>
+            </video>
+          ))}
       </section>
     </div>
   );

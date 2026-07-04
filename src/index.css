@@ -14,18 +14,11 @@
 /* --------- App --------- */
 .app-container {
   display: grid;
-  grid-template-rows: 1fr 60px;
+  grid-template-rows: 1fr 80px;
   min-height: 100vh;
 }
 main {
   padding: 20px;
-}
-
-.sections-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  margin: 0 auto;
 }
 
 footer {
@@ -46,14 +39,13 @@ footer div {
 .bob-image {
   position: absolute;
   filter: contrast(2);
+  mix-blend-mode: multiply;
   bottom: 0;
   right: 0px;
+  pointer-events: none;
 }
 
 @media only screen and (max-width: 700px) {
-  .sections-container {
-    grid-template-columns: 1fr;
-  }
   footer {
     display: flex;
     flex-flow: column-reverse;
@@ -107,6 +99,12 @@ footer div {
 }
 
 /* --------- SelectedWorks --------- */
+.sections-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: 0 auto;
+}
 ul {
   list-style: none;
 }
@@ -114,11 +112,13 @@ ul {
   display: flex;
   flex-flow: column;
 }
-.selected-works-container h2 {
-  font-weight: 800;
+.subheading {
+  font-weight: 600;
+  font-size: 18px;
 }
 .description-box {
   display: grid;
+  max-width: 350px;
   grid-template-rows: 0fr;
   transition: grid-template-rows 300ms ease;
 }
@@ -127,6 +127,10 @@ ul {
 }
 .description-box > .description-inner {
   overflow: hidden;
+}
+.what-we-did {
+  padding-top: 5px;
+  font-style: italic;
 }
 .title-container {
   display: flex;
@@ -141,6 +145,7 @@ ul {
   color: hotpink;
 }
 .title-container button {
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -206,6 +211,15 @@ ul {
 .tooltip:focus-within .tooltip-bubble {
   opacity: 1;
   visibility: visible;
+}
+.selected-works-video {
+  width: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .sections-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ----- About ------ */
