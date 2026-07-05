@@ -10,7 +10,7 @@ type Work = {
   description: string;
   whatWeDid: string;
   stack: string[];
-  screenshots: string[];
+  screenshots: { url: string; type: "image" | "video" }[];
 };
 
 const stackMap = new Map();
@@ -82,7 +82,7 @@ const works: Work[] = [
       "CSS",
       "HTML",
     ],
-    screenshots: [],
+    screenshots: [{ url: "/straddle-vid.webm", type: "video" }],
   },
   {
     id: "jack-farman",
@@ -120,7 +120,7 @@ const works: Work[] = [
       "Studio producing design objects focussed around nature, ecology, and our relationship therein.",
     whatWeDid: "Calendar integration and events booking system.",
     stack: ["EcmaScript (JS)", "CSS", "HTML"],
-    screenshots: ["/earthly-futures-calendar-vid.webm"],
+    screenshots: [{ url: "/earthly-futures-calendar-vid.webm", type: "video" }],
   },
   {
     id: "fa-tpwg",
@@ -137,6 +137,8 @@ const works: Work[] = [
 
 export default function SelectedWorks() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const work: Work | undefined = works.find((w) => openId === w.id);
+  const screenshot = work?.screenshots[0];
 
   return (
     <div className="sections-container">
@@ -200,12 +202,23 @@ export default function SelectedWorks() {
         </div>
       </section>
       <section>
-        {works
-          .find((work) => work.id === openId)
-          ?.screenshots.map((screenshot) => (
-            <video className="selected-works-video" autoPlay loop muted>
-              <source src={screenshot}></source>
+        {screenshot &&
+          (screenshot.type === "video" ? (
+            <video
+              className="selected-works-video"
+              autoPlay
+              loop
+              muted
+              key={screenshot.url}
+            >
+              <source src={screenshot.url} />
             </video>
+          ) : (
+            <img
+              className="selected-works-video"
+              src={screenshot.url}
+              alt={work?.title}
+            />
           ))}
       </section>
     </div>
