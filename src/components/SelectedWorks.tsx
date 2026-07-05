@@ -15,25 +15,25 @@ type Work = {
 
 const stackMap = new Map();
 stackMap
-  .set("MySQL", "/mysql.svg")
-  .set("WordPress", "/wordpress.svg")
-  .set("EcmaScript (JS)", "/ecmascript.svg")
-  .set("TypeScript", "/typescript.svg")
-  .set("PHP", "/php.svg")
-  .set("CSS", "/css.svg")
-  .set("HTML", "/html.svg")
-  .set("SQLite", "/sqlite.svg")
-  .set("React", "/react.svg")
-  .set("PostgreSQL", "/postgres.svg")
-  .set("Clerk", "/clerk.svg")
-  .set("Prisma", "/prisma.svg")
-  .set("Drizzle", "/drizzle.svg")
-  .set("Hono", "/hono.svg")
-  .set("Stripe", "/stripe.svg")
-  .set("Vite", "vite.svg")
-  .set("SquareSpace", "/squarespace.svg")
-  .set("Howler", "/howler.svg")
-  .set("Kirby", "/kirby.svg");
+  .set("MySQL", import.meta.env.BASE_URL + "mysql.svg")
+  .set("WordPress", import.meta.env.BASE_URL + "wordpress.svg")
+  .set("EcmaScript (JS)", import.meta.env.BASE_URL + "ecmascript.svg")
+  .set("TypeScript", import.meta.env.BASE_URL + "typescript.svg")
+  .set("PHP", import.meta.env.BASE_URL + "php.svg")
+  .set("CSS", import.meta.env.BASE_URL + "css.svg")
+  .set("HTML", import.meta.env.BASE_URL + "html.svg")
+  .set("SQLite", import.meta.env.BASE_URL + "sqlite.svg")
+  .set("React", import.meta.env.BASE_URL + "react.svg")
+  .set("PostgreSQL", import.meta.env.BASE_URL + "postgres.svg")
+  .set("Clerk", import.meta.env.BASE_URL + "clerk.svg")
+  .set("Prisma", import.meta.env.BASE_URL + "prisma.svg")
+  .set("Drizzle", import.meta.env.BASE_URL + "drizzle.svg")
+  .set("Hono", import.meta.env.BASE_URL + "hono.svg")
+  .set("Stripe", import.meta.env.BASE_URL + "stripe.svg")
+  .set("Vite", import.meta.env.BASE_URL + "vite.svg")
+  .set("SquareSpace", import.meta.env.BASE_URL + "squarespace.svg")
+  .set("Howler", import.meta.env.BASE_URL + "howler.svg")
+  .set("Kirby", import.meta.env.BASE_URL + "kirby.svg");
 
 const works: Work[] = [
   {
@@ -82,7 +82,7 @@ const works: Work[] = [
       "CSS",
       "HTML",
     ],
-    screenshots: [{ url: "/straddle-vid.webm", type: "video" }],
+    screenshots: [{ url: "straddle-vid.webm", type: "video" }],
   },
   {
     id: "jack-farman",
@@ -120,7 +120,7 @@ const works: Work[] = [
       "Studio producing design objects focussed around nature, ecology, and our relationship therein.",
     whatWeDid: "Calendar integration and events booking system.",
     stack: ["EcmaScript (JS)", "CSS", "HTML"],
-    screenshots: [{ url: "/earthly-futures-calendar-vid.webm", type: "video" }],
+    screenshots: [{ url: "earthly-futures-calendar-vid.webm", type: "video" }],
   },
   {
     id: "fa-tpwg",
@@ -216,7 +216,7 @@ export default function SelectedWorks() {
           ) : (
             <img
               className="selected-works-video"
-              src={screenshot.url}
+              src={import.meta.env.BASE_URL + screenshot.url}
               alt={work?.title}
             />
           ))}

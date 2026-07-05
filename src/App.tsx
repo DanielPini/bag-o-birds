@@ -17,7 +17,11 @@ export default function App() {
         </div>
         <div></div>
         <div className="image-container">
-          <img src="/android-chrome-192x192.png" alt="" className="bob-image" />
+          <img
+            src={import.meta.env.BASE_URL + "android-chrome-192x192.png"}
+            alt=""
+            className="bob-image"
+          />
         </div>
       </footer>
     </div>
