@@ -15,13 +15,13 @@ export default function Title() {
       const elapsed = (now - start) / 1000; // seconds since start
 
       const hue1 =
-        0 + 50 * Math.sin(elapsed / 19) + 150 * Math.sin(elapsed / 13 + 2);
+        -150 + 50 * Math.sin(elapsed / 19) + 150 * Math.sin(elapsed / 13 + 2);
       const hue2 =
-        90 + 70 * Math.sin(elapsed / 29) + 190 * Math.sin(elapsed / 31 + 3);
+        -80 + 70 * Math.sin(elapsed / 29) + 190 * Math.sin(elapsed / 31 + 3);
       const hue3 =
-        180 + 100 * Math.sin(elapsed / 37) + 250 * Math.sin(elapsed / 23 + 4);
+        10 + 100 * Math.sin(elapsed / 37) + 250 * Math.sin(elapsed / 23 + 4);
       const hue4 =
-        270 + 25 * Math.sin(elapsed / 13) + 100 * Math.sin(elapsed / 29 + 5);
+        100 + 25 * Math.sin(elapsed / 13) + 100 * Math.sin(elapsed / 29 + 5);
       el.style.setProperty("--hue-1", String(hue1));
       el.style.setProperty("--hue-2", String(hue2));
       el.style.setProperty("--hue-3", String(hue3));
