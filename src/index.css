@@ -39,7 +39,6 @@ footer div {
 }
 .image-container {
   position: relative;
-  mix-blend-mode: multiply;
 }
 .bob-image {
   filter: contrast(2);
