@@ -10,6 +10,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  background-color: #fff;
+}
 
 /* --------- App --------- */
 .app-container {
@@ -35,11 +39,11 @@ footer div {
 }
 .image-container {
   position: relative;
+  mix-blend-mode: multiply;
 }
 .bob-image {
-  position: absolute;
   filter: contrast(2);
-  mix-blend-mode: multiply;
+  position: absolute;
   bottom: 0;
   right: 0px;
   pointer-events: none;
@@ -145,6 +149,7 @@ ul {
   color: hotpink;
 }
 .title-container button {
+  color: black;
   cursor: pointer;
   display: flex;
   align-items: center;

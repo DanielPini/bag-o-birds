@@ -206,12 +206,13 @@ export default function SelectedWorks() {
           (screenshot.type === "video" ? (
             <video
               className="selected-works-video"
+              playsInline
               autoPlay
               loop
               muted
               key={screenshot.url}
             >
-              <source src={screenshot.url} />
+              <source src={import.meta.env.BASE_URL + screenshot.url} />
             </video>
           ) : (
             <img
