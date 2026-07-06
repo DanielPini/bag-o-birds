@@ -18,7 +18,7 @@ export default function App() {
         <div></div>
         <div className="image-container">
           <img
-            src={import.meta.env.BASE_URL + "android-chrome-192x192.png"}
+            src={import.meta.env.BASE_URL + "bob-transparent-small.webp"}
             alt=""
             className="bob-image"
           />
