@@ -59,7 +59,8 @@ footer div {
     padding-top: 0;
   }
   .bob-image {
-    left: 25%;
+    left: 33%;
+    width: 120px;
     transform: translateX(-50%);
   }
 }

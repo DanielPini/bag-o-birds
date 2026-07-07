@@ -15,7 +15,7 @@ export default function App() {
           <p>Last updated July 2026</p>
           <p>&copy;2026 Daniel Pini</p>
         </div>
-        <div></div>
+        <div className="spacer"></div>
         <div className="image-container">
           <img
             src={import.meta.env.BASE_URL + "bob-transparent-small.webp"}
