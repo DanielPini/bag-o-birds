@@ -1,6 +1,8 @@
 import { useState } from "react";
+import ScreenshotSection from "./ScreenshotSection";
+import { useIsMobile } from "../hooks/useIsMobile";
 
-type Work = {
+export type Work = {
   id: string;
   year: string;
   title: string;
@@ -137,8 +139,9 @@ const works: Work[] = [
 
 export default function SelectedWorks() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const work: Work | undefined = works.find((w) => openId === w.id);
-  const screenshot = work?.screenshots[0];
+  const isMobile = useIsMobile();
+  const currentWork: Work | undefined = works.find((w) => openId === w.id);
+  const screenshot = currentWork?.screenshots[0];
 
   return (
     <div className="sections-container">
@@ -196,32 +199,17 @@ export default function SelectedWorks() {
                     </p>
                   </div>
                 </div>
+                {isMobile && screenshot && openId === work.id && (
+                  <ScreenshotSection currentWork={currentWork} />
+                )}
               </li>
             ))}
           </ul>
         </div>
       </section>
-      <section>
-        {screenshot &&
-          (screenshot.type === "video" ? (
-            <video
-              className="selected-works-video"
-              playsInline
-              autoPlay
-              loop
-              muted
-              key={screenshot.url}
-            >
-              <source src={import.meta.env.BASE_URL + screenshot.url} />
-            </video>
-          ) : (
-            <img
-              className="selected-works-video"
-              src={import.meta.env.BASE_URL + screenshot.url}
-              alt={work?.title}
-            />
-          ))}
-      </section>
+      {!isMobile && screenshot && (
+        <ScreenshotSection currentWork={currentWork} />
+      )}
     </div>
   );
 }
