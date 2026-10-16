@@ -12,8 +12,14 @@ export type Work = {
   description: string;
   whatWeDid: string;
   stack: string[];
-  screenshots: { url: string; type: "image" | "video" }[];
+  screenshots: Screenshot[];
 };
+
+// List video sources in order of preference. The browser plays the first one it supports.
+// `alt` describes what's on screen, for screen readers.
+export type Screenshot =
+  | { type: "image"; url: string; alt: string }
+  | { type: "video"; sources: string[]; poster: string; alt: string };
 
 const stackMap = new Map();
 stackMap
@@ -84,7 +90,14 @@ const works: Work[] = [
       "CSS",
       "HTML",
     ],
-    screenshots: [{ url: "straddle-vid.webm", type: "video" }],
+    screenshots: [
+      {
+        type: "video",
+        sources: ["straddle-vid.mp4", "straddle-vid.webm"],
+        poster: "straddle-vid-poster.webp",
+        alt: "Straddle's tournament timer counting down level 2, blinds 25/50, with petals drifting across the screen.",
+      },
+    ],
   },
   {
     id: "jack-farman",
@@ -122,7 +135,17 @@ const works: Work[] = [
       "Studio producing design objects focussed around nature, ecology, and our relationship therein.",
     whatWeDid: "Calendar integration and events booking system.",
     stack: ["JavaScript", "CSS", "HTML"],
-    screenshots: [{ url: "earthly-futures-calendar-vid.webm", type: "video" }],
+    screenshots: [
+      {
+        type: "video",
+        sources: [
+          "earthly-futures-calendar-vid.mp4",
+          "earthly-futures-calendar-vid.webm",
+        ],
+        poster: "earthly-futures-calendar-vid-poster.webp",
+        alt: "Earthly Futures' events calendar for May 2025 over a blurred, sunlit background.",
+      },
+    ],
   },
   {
     id: "fa-tpwg",
@@ -148,7 +171,7 @@ export default function SelectedWorks() {
       <section>
         <div className="selected-works-container">
           <h2 className="subheading">Selected works</h2>
-          <ul>
+          <ul className="works-list">
             {works.map((work) => (
               <li key={work.id}>
                 <h3
@@ -158,20 +181,23 @@ export default function SelectedWorks() {
                     type="button"
                     className={openId === work.id ? "is-open" : ""}
                     aria-expanded={openId === work.id}
+                    aria-controls={`${work.id}-details`}
                     onClick={() =>
                       setOpenId(openId === work.id ? null : work.id)
                     }
                   >
                     {work.title}
-                    <div
+                    <span
                       className={`lines ${openId === work.id ? "is-open" : ""}`}
+                      aria-hidden="true"
                     >
-                      <div className="line hline"></div>
-                      <div className="line vline"></div>
-                    </div>
+                      <span className="line hline"></span>
+                      <span className="line vline"></span>
+                    </span>
                   </button>
                 </h3>
                 <div
+                  id={`${work.id}-details`}
                   className={`description-box ${openId === work.id ? "is-open" : ""}`}
                   inert={openId !== work.id}
                 >
@@ -181,22 +207,21 @@ export default function SelectedWorks() {
                     <a href={work.url} className="url">
                       {work.url}
                     </a>
-                    <p>
+                    <ul className="stack">
                       {work.stack.map((el) => (
-                        <span className="tooltip" key={el}>
+                        <li className="tooltip" key={el}>
                           <img
                             src={stackMap.get(el)}
                             alt={el}
                             height={30}
                             className="stack-image"
-                            tabIndex={0}
                           />
                           <span className="tooltip-bubble" aria-hidden="true">
                             {el}
                           </span>
-                        </span>
+                        </li>
                       ))}
-                    </p>
+                    </ul>
                   </div>
                 </div>
                 {isMobile && screenshot && openId === work.id && (

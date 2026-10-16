@@ -78,7 +78,10 @@ footer div {
   --hue-3: 320;
   --hue-4: 20;
 }
-.title-bg h1 {
+.title-bg .hello {
+  /* Matches the browser's default h1 so the greeting looks the same as before */
+  font-size: 2em;
+  font-weight: 700;
   padding: 20px 0;
   background:
     linear-gradient(
@@ -117,6 +120,11 @@ footer div {
 ul {
   list-style: none;
 }
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
 .selected-works-container {
   display: flex;
   flex-flow: column;
@@ -129,16 +137,22 @@ ul {
   display: grid;
   max-width: 60ch;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 300ms ease;
+  transition:
+    grid-template-rows 300ms ease,
+    margin-bottom 300ms ease;
 }
 .description-box.is-open {
   grid-template-rows: 1fr;
+  margin-bottom: 1.5em;
 }
 .description-box > .description-inner {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75em;
 }
 .what-we-did {
-  padding-top: 5px;
   font-style: italic;
 }
 .title-container {
@@ -150,8 +164,14 @@ ul {
 .url {
   color: black;
 }
-.url:hover {
+.url:hover,
+.url:focus-visible {
   color: hotpink;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .title-container button {
   color: black;
@@ -163,6 +183,7 @@ ul {
   border: none;
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.2;
   transform: skew(0deg);
   transition: transform 300ms ease;
 }
@@ -188,13 +209,19 @@ ul {
 }
 .hline {
   top: 4px;
+  left: 0;
   width: 10px;
   height: 0;
 }
 .vline {
+  top: 0;
   left: 4px;
   height: 10px;
   width: 0;
+}
+.stack {
+  display: flex;
+  flex-wrap: wrap;
 }
 .stack-image {
   height: 20px;
@@ -228,6 +255,21 @@ ul {
 .selected-works-image {
   width: 200px;
 }
+.video-toggle {
+  display: block;
+  margin-top: 0.5em;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.video-toggle svg {
+  display: block;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
 
 @media only screen and (max-width: 768px) {
   .sections-container {
@@ -239,4 +281,9 @@ ul {
 
 .about {
   margin-bottom: 20px;
+}
+.about h1 {
+  /* Real h1 for screen readers and search, styled as body text */
+  font-size: 1em;
+  font-weight: 400;
 }

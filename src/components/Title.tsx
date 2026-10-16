@@ -35,7 +35,8 @@ export default function Title() {
   }, []);
   return (
     <div ref={bgRef} className="title-bg">
-      <h1>Hello birbs</h1>
+      {/* Decorative greeting. The page's real h1 is in About. */}
+      <p className="hello">Hello birbs</p>
     </div>
   );
 }
