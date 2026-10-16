@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import type { Screenshot, Work } from "./SelectedWorks";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
@@ -11,6 +11,10 @@ type Video = Extract<Screenshot, { type: "video" }>;
 const videoType = (src: string) =>
   src.endsWith(".mp4") ? "video/mp4" : "video/webm";
 
+// Feeds the file's shape to the CSS, which sizes the media from it
+const ratio = (s: Screenshot) =>
+  ({ "--ratio": `${s.width} / ${s.height}` }) as CSSProperties;
+
 export default function ScreenshotSection({
   currentWork,
 }: ScreenshotSectionProps) {
@@ -18,7 +22,7 @@ export default function ScreenshotSection({
   if (!screenshot) return null;
 
   return (
-    <section>
+    <section className="screenshot-section">
       {screenshot.type === "video" ? (
         // Keyed so play/pause state resets when the project changes
         <ProjectVideo key={screenshot.sources[0]} video={screenshot} />
@@ -27,6 +31,9 @@ export default function ScreenshotSection({
           className="selected-works-image"
           src={import.meta.env.BASE_URL + screenshot.url}
           alt={screenshot.alt}
+          width={screenshot.width}
+          height={screenshot.height}
+          style={ratio(screenshot)}
         />
       )}
     </section>
@@ -54,6 +61,9 @@ function ProjectVideo({ video }: { video: Video }) {
         className="selected-works-video"
         poster={import.meta.env.BASE_URL + video.poster}
         aria-label={video.alt}
+        width={video.width}
+        height={video.height}
+        style={ratio(video)}
         playsInline
         autoPlay={!reducedMotion}
         loop

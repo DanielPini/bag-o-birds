@@ -41,12 +41,134 @@ footer div {
 .image-container {
   position: relative;
 }
-.bob-image {
-  filter: contrast(2);
+
+/* --------- Bob --------- */
+.bob {
   position: absolute;
   bottom: 0;
-  right: 0px;
-  pointer-events: none;
+  right: 0;
+  width: 250px;
+  padding: 0;
+}
+.bob-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.bob-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: contrast(2);
+  transform-origin: 50% 100%;
+  transition: transform 300ms ease;
+}
+.bob-button:hover .bob-image {
+  transform: rotate(0.5deg);
+}
+.bob.is-woofing .bob-image {
+  animation: bob-woof 200ms ease;
+}
+@keyframes bob-woof {
+  50% {
+    transform: translateY(-6%) rotate(-3deg);
+  }
+}
+
+/* Action lines coming out of Bob's nose. Same 2px black as the plus icon. */
+.woof-lines {
+  /* Bob's nose is about 30% across and 19% down the image */
+  position: absolute;
+  top: 15%;
+  right: 74%;
+  width: 17%;
+  height: 18%;
+  visibility: hidden;
+}
+.woof-line {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  border-top: 2px solid black;
+  transform-origin: 100% 50%;
+  transform: rotate(var(--angle));
+}
+.woof-line:nth-child(1) {
+  top: 20%;
+  --angle: 20deg;
+}
+.woof-line:nth-child(2) {
+  top: 35%;
+  --angle: 0deg;
+}
+.woof-line:nth-child(3) {
+  top: 50%;
+  --angle: -20deg;
+}
+.bob.is-woofing .woof-lines {
+  visibility: visible;
+}
+.bob.is-woofing .woof-line {
+  animation: woof-line 200ms ease-out backwards;
+}
+.bob.is-woofing .woof-line:nth-child(2) {
+  animation-delay: 60ms;
+}
+.bob.is-woofing .woof-line:nth-child(3) {
+  animation-delay: 120ms;
+}
+@keyframes woof-line {
+  from {
+    transform: rotate(var(--angle)) scaleX(0);
+  }
+}
+
+.bob-bubble {
+  position: absolute;
+  bottom: 71%;
+  right: 89%;
+  padding: 0.4em 0.75em;
+  white-space: nowrap;
+  /* background: white; */
+  /* border: 2px solid black; */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transform-origin: 100% 100%;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    visibility 150ms;
+}
+.bob.is-woofing .bob-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition-delay: 150ms;
+}
+.bob-bubble a {
+  color: black;
+}
+.bob-bubble a:hover,
+.bob-bubble a:focus-visible {
+  color: hotpink;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bob-image,
+  .bob-bubble {
+    transition: none;
+  }
+  .bob.is-woofing .bob-image,
+  .bob.is-woofing .woof-line {
+    animation: none;
+  }
+  .bob.is-woofing .bob-bubble {
+    transition-delay: 0s;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -63,10 +185,18 @@ footer div {
     text-align: center;
     padding-top: 0;
   }
-  .bob-image {
+  .bob {
+    right: auto;
     left: 33%;
     width: 120px;
     transform: translateX(-50%);
+  }
+  /* Not enough room to the left of Bob on a phone, so the bubble sits above */
+  .bob-bubble {
+    right: auto;
+    left: 0;
+    bottom: 100%;
+    transform-origin: 0 100%;
   }
 }
 
@@ -249,11 +379,22 @@ button:focus-visible {
   opacity: 1;
   visibility: visible;
 }
-.selected-works-video {
-  width: 200px;
-}
+.selected-works-video,
 .selected-works-image {
-  width: 200px;
+  display: block;
+  /* Fill the column, but no wider than 30rem, and no taller than the
+     viewport minus room for the gap above and the play button below.
+     --ratio is set per clip from its width and height. */
+  width: min(100%, 30rem, calc((100svh - 8rem) * var(--ratio)));
+  height: auto;
+  aspect-ratio: var(--ratio);
+}
+@media only screen and (min-width: 769px) {
+  .screenshot-section {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
 }
 .video-toggle {
   display: block;

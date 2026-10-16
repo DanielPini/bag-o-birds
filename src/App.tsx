@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Bob from "./components/Bob";
 import SelectedWorks from "./components/SelectedWorks";
 import Title from "./components/Title";
 
@@ -27,11 +28,7 @@ export default function App() {
         </div>
         <div className="spacer"></div>
         <div className="image-container">
-          <img
-            src={import.meta.env.BASE_URL + "bob-transparent-small.webp"}
-            alt=""
-            className="bob-image"
-          />
+          <Bob />
         </div>
       </footer>
     </div>

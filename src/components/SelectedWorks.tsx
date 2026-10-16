@@ -17,9 +17,12 @@ export type Work = {
 
 // List video sources in order of preference. The browser plays the first one it supports.
 // `alt` describes what's on screen, for screen readers.
-export type Screenshot =
-  | { type: "image"; url: string; alt: string }
-  | { type: "video"; sources: string[]; poster: string; alt: string };
+// `width` and `height` are the file's pixel size. They set the shape of the box
+// before the file loads, so nothing jumps.
+export type Screenshot = { alt: string; width: number; height: number } & (
+  | { type: "image"; url: string }
+  | { type: "video"; sources: string[]; poster: string }
+);
 
 const stackMap = new Map();
 stackMap
@@ -95,6 +98,8 @@ const works: Work[] = [
         type: "video",
         sources: ["straddle-vid.mp4", "straddle-vid.webm"],
         poster: "straddle-vid-poster.webp",
+        width: 720,
+        height: 1280,
         alt: "Straddle's tournament timer counting down level 2, blinds 25/50, with petals drifting across the screen.",
       },
     ],
@@ -143,6 +148,8 @@ const works: Work[] = [
           "earthly-futures-calendar-vid.webm",
         ],
         poster: "earthly-futures-calendar-vid-poster.webp",
+        width: 1080,
+        height: 1350,
         alt: "Earthly Futures' events calendar for May 2025 over a blurred, sunlit background.",
       },
     ],
