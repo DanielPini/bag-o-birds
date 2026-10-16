@@ -6,5 +6,5 @@ import babel from "@rolldown/plugin-babel";
 export default defineConfig({
   base: "/",
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
-  define: { __BUILD_DATE__: JSON.stringify(new Date().toISOString) },
+  define: { __BUILD_DATE__: JSON.stringify(new Date().toISOString()) },
 });

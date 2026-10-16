@@ -45,7 +45,7 @@ const works: Work[] = [
     client: ["CoMA"],
     url: "https://coma.org",
     description:
-      "CoMA is a Contemporary music organisation based in the UK. Established in 1993, CoMA runs events for musicians of all abilities to build musical communities and new repertoires. Devoted to creating a culture of musical participation and collaboration, CoMA runs contemporary music ensembles throughout the UK, with an expanding international program.",
+      "CoMA is a contemporary music organisation based in the UK. Established in 1993, CoMA runs events for musicians of all abilities to build musical communities and new repertoires. Devoted to creating a culture of musical participation and collaboration, CoMA runs contemporary music ensembles throughout the UK, with an expanding international programme.",
     whatWeDid:
       "Updated digital presence, e-commerce integration, and database.",
     stack: ["MySQL", "WordPress", "JavaScript", "PHP", "CSS", "HTML"],
