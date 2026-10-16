@@ -19,7 +19,7 @@ const stackMap = new Map();
 stackMap
   .set("MySQL", import.meta.env.BASE_URL + "mysql.svg")
   .set("WordPress", import.meta.env.BASE_URL + "wordpress.svg")
-  .set("EcmaScript (JS)", import.meta.env.BASE_URL + "ecmascript.svg")
+  .set("JavaScript", import.meta.env.BASE_URL + "ecmascript.svg")
   .set("TypeScript", import.meta.env.BASE_URL + "typescript.svg")
   .set("PHP", import.meta.env.BASE_URL + "php.svg")
   .set("CSS", import.meta.env.BASE_URL + "css.svg")
@@ -33,7 +33,7 @@ stackMap
   .set("Hono", import.meta.env.BASE_URL + "hono.svg")
   .set("Stripe", import.meta.env.BASE_URL + "stripe.svg")
   .set("Vite", import.meta.env.BASE_URL + "vite.svg")
-  .set("SquareSpace", import.meta.env.BASE_URL + "squarespace.svg")
+  .set("Squarespace", import.meta.env.BASE_URL + "squarespace.svg")
   .set("Howler", import.meta.env.BASE_URL + "howler.svg")
   .set("Kirby", import.meta.env.BASE_URL + "kirby.svg");
 
@@ -48,7 +48,7 @@ const works: Work[] = [
       "CoMA is a Contemporary music organisation based in the UK. Established in 1993, CoMA runs events for musicians of all abilities to build musical communities and new repertoires. Devoted to creating a culture of musical participation and collaboration, CoMA runs contemporary music ensembles throughout the UK, with an expanding international program.",
     whatWeDid:
       "Updated digital presence, e-commerce integration, and database.",
-    stack: ["MySQL", "WordPress", "EcmaScript (JS)", "PHP", "CSS", "HTML"],
+    stack: ["MySQL", "WordPress", "JavaScript", "PHP", "CSS", "HTML"],
     screenshots: [],
   },
   {
@@ -60,7 +60,7 @@ const works: Work[] = [
       "Runway Journal is an open-access digital publishing platform that commissions, cultivates and preserves experimental and critical writing practices. As one of Australia’s longest-running artist-run initiatives, Runway is committed to advancing the field of experimental digital art and fostering the practices of emerging and underrepresented voices.",
     whatWeDid:
       "Work with artists and writers to create immersive and innovative digital works.",
-    stack: ["Kirby", "EcmaScript (JS)", "CSS", "HTML"],
+    stack: ["Kirby", "JavaScript", "CSS", "HTML"],
     screenshots: [],
   },
   {
@@ -93,9 +93,9 @@ const works: Work[] = [
     client: ["Jack Farman"],
     url: "https://jack-farman.netlify.app",
     description:
-      "Jack Farman is a filmmaker, researcher, and entrepreneur. Jack's work explores the intersection of ecology, spacial practice and collective memory.",
+      "Jack Farman is a filmmaker, researcher, and entrepreneur. Jack's work explores the intersection of ecology, spatial practice and collective memory.",
     whatWeDid:
-      "Portfolio website integrating his work on Koinpost, his films, and his  ecological advocacy.",
+      "Portfolio website integrating his work on Koinpost, his films, and his ecological advocacy.",
     stack: ["Vite", "TypeScript", "React", "CSS", "HTML"],
     screenshots: [],
   },
@@ -106,10 +106,10 @@ const works: Work[] = [
     client: ["Niki Johnson"],
     url: "https://niki-johnson.com",
     description:
-      "Contemporary percussionist, researcher, and compoer-performer.",
+      "Contemporary percussionist, researcher, and composer-performer.",
     whatWeDid:
-      "Portfolio website on squarespace integrating her prolific performing practice, her PhD thesis, her teaching, and events.",
-    stack: ["SquareSpace", "CSS", "HTML"],
+      "Portfolio website on Squarespace integrating her prolific performing practice, her PhD thesis, her teaching, and events.",
+    stack: ["Squarespace", "CSS", "HTML"],
     screenshots: [],
   },
   {
@@ -121,7 +121,7 @@ const works: Work[] = [
     description:
       "Studio producing design objects focussed around nature, ecology, and our relationship therein.",
     whatWeDid: "Calendar integration and events booking system.",
-    stack: ["EcmaScript (JS)", "CSS", "HTML"],
+    stack: ["JavaScript", "CSS", "HTML"],
     screenshots: [{ url: "earthly-futures-calendar-vid.webm", type: "video" }],
   },
   {
@@ -132,7 +132,7 @@ const works: Work[] = [
     url: "https://fable-arts.com",
     description: "Custom video game for contemporary opera.",
     whatWeDid: "Built out from scratch.",
-    stack: ["Howler", "EcmaScript (JS)", "CSS", "HTML"],
+    stack: ["Howler", "JavaScript", "CSS", "HTML"],
     screenshots: [],
   },
 ];
